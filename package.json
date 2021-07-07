@@ -53,7 +53,7 @@
     "@stdlib/buffer-ctor": "^0.0.x",
     "@stdlib/buffer-from-arraybuffer": "^0.0.x",
     "@stdlib/buffer-from-string": "^0.0.x",
-    "@stdlib/cli": "^0.0.x",
+    "@stdlib/cli-ctor": "^0.0.x",
     "@stdlib/fs-read-file": "^0.0.x",
     "@stdlib/streams-node-stdout": "^0.0.x",
     "@stdlib/utils-copy": "^0.0.x",
