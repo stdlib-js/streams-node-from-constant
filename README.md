@@ -20,7 +20,7 @@ limitations under the License.
 
 # Constant Stream
 
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] [![dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
 > Create a [readable stream][readable-stream] which always streams the same value.
 
@@ -327,8 +327,8 @@ $ constant-stream 'beep' -n 10
 
 ## See Also
 
--   [`@stdlib/streams/node/from-array`][@stdlib/streams/node/from-array]: create a readable stream from an array-like object.
--   [`@stdlib/streams/node/from-iterator`][@stdlib/streams/node/from-iterator]: create a readable stream from an iterator.
+-   <span class="package-name">[`@stdlib/streams/node/from-array`][@stdlib/streams/node/from-array]</span><span class="delimiter">: </span><span class="description">create a readable stream from an array-like object.</span>
+-   <span class="package-name">[`@stdlib/streams/node/from-iterator`][@stdlib/streams/node/from-iterator]</span><span class="delimiter">: </span><span class="description">create a readable stream from an iterator.</span>
 
 </section>
 
@@ -379,8 +379,12 @@ Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/streams-node-from-constant/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/streams-node-from-constant?branch=main
 
+<!--
+
 [dependencies-image]: https://img.shields.io/david/stdlib-js/streams-node-from-constant.svg
 [dependencies-url]: https://david-dm.org/stdlib-js/streams-node-from-constant/main
+
+-->
 
 [chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
 [chat-url]: https://gitter.im/stdlib-js/stdlib/
