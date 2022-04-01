@@ -1,0 +1,34 @@
+{
+  "name": "@stdlib/streams-node-from-constant",
+  "version": "0.0.0",
+  "description": "Create a readable stream which always streams the same value.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./mod.js",
+  "homepage": "https://stdlib.io",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stdlib-js/streams-node-from-constant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stdlib-js/stdlib/issues"
+  },
+  "keywords": [
+    "stdlib",
+    "utilities",
+    "utility",
+    "utils",
+    "util",
+    "node",
+    "stream",
+    "streams",
+    "readable",
+    "constant",
+    "const",
+    "repeat"
+  ],
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/athan"
+  }
+}
