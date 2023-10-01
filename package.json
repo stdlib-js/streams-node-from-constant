@@ -69,7 +69,7 @@
     "@stdlib/assert-is-browser": "^0.1.0",
     "@stdlib/assert-is-windows": "^0.1.0",
     "@stdlib/bench": "^0.1.0",
-    "@stdlib/blas-base-gcopy": "^0.0.8",
+    "@stdlib/blas-base-gcopy": "^0.1.0",
     "@stdlib/process-exec-path": "^0.1.0",
     "@stdlib/streams-node-inspect-sink": "^0.1.0",
     "tape": "git+https://github.com/kgryte/tape.git#fix/globby",
