@@ -35,20 +35,31 @@ limitations under the License.
 
 > Create a [readable stream][readable-stream] which always streams the same value.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/streams-node-from-constant
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+-   To use as a general utility for the command line, install the corresponding [CLI package][cli-section] globally.
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@deno/mod.js';
-```
-
-You can also import the following named exports from the package:
-
-```javascript
-import { factory, objectMode } from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@deno/mod.js';
+var constantStream = require( '@stdlib/streams-node-from-constant' );
 ```
 
 <a name="constant-stream"></a>
@@ -58,7 +69,7 @@ import { factory, objectMode } from 'https://cdn.jsdelivr.net/gh/stdlib-js/strea
 Returns a [readable stream][readable-stream] which **always** streams the **same** `value`.
 
 ```javascript
-import inspectStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@deno/mod.js';
+var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
 
 var iStream;
 var stream;
@@ -99,7 +110,7 @@ var stream = constantStream( 'beep', opts );
 By default, the function returns a [stream][stream] which streams an infinite number of values (i.e., the [stream][stream] will **never** end). To limit the number of streamed values, set the `iter` option.
 
 ```javascript
-import inspectStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@deno/mod.js';
+var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
 
 function log( chunk ) {
     console.log( chunk.toString() );
@@ -118,7 +129,7 @@ stream.pipe( iStream );
 By default, when not operating in [objectMode][object-mode], a returned [stream][stream] delineates streamed values using a newline character. To specify an alternative separator, set the `sep` option.
 
 ```javascript
-import inspectStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@deno/mod.js';
+var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
 
 function log( chunk ) {
     console.log( chunk.toString() );
@@ -180,7 +191,7 @@ The method accepts the same `options` as [`constantStream()`](#constant-stream).
 This method is a convenience function to create [streams][stream] which **always** operate in [objectMode][object-mode].
 
 ```javascript
-import inspectStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@deno/mod.js';
+var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
 
 function log( v ) {
     console.log( v );
@@ -233,8 +244,8 @@ This method accepts the same `options` as [`constantStream()`](#constant-stream)
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import inspectStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@deno/mod.js';
-import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@deno/mod.js';
+var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
+var constantStream = require( '@stdlib/streams-node-from-constant' );
 
 function log( v ) {
     console.log( v.toString() );
@@ -261,7 +272,74 @@ stream.pipe( iStream );
 
 <!-- Section for describing a command-line interface. -->
 
+* * *
 
+<section class="cli">
+
+## CLI
+
+<section class="installation">
+
+## Installation
+
+To use as a general utility, install the CLI package globally
+
+```bash
+npm install -g @stdlib/streams-node-from-constant-cli
+```
+
+</section>
+<!-- CLI usage documentation. -->
+
+
+<section class="usage">
+
+### Usage
+
+```text
+Usage: constant-stream [options] <value>
+
+Options:
+
+  -h,  --help               Print this message.
+  -V,  --version            Print the package version.
+       --sep sep            Separator used to join streamed data. Default: '\n'.
+  -n,  --iter iterations    Number of iterations.
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- CLI usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+### Notes
+
+-   In accordance with POSIX convention, a trailing newline is **always** appended to generated output prior to exit.
+
+</section>
+
+<!-- /.notes -->
+
+<!-- CLI usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```bash
+$ constant-stream 'beep' -n 10
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.cli -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -287,7 +365,7 @@ stream.pipe( iStream );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -359,9 +437,9 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/streams/node/from-array]: https://github.com/stdlib-js/streams-node-from-array/tree/deno
+[@stdlib/streams/node/from-array]: https://github.com/stdlib-js/streams-node-from-array
 
-[@stdlib/streams/node/from-iterator]: https://github.com/stdlib-js/streams-node-from-iterator/tree/deno
+[@stdlib/streams/node/from-iterator]: https://github.com/stdlib-js/streams-node-from-iterator
 
 <!-- </related-links> -->
 
