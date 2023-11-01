@@ -65,7 +65,7 @@
     "readable-stream": "^2.1.4"
   },
   "devDependencies": {
-    "@stdlib/array-uint8": "^0.1.0",
+    "@stdlib/array-uint8": "^0.1.1",
     "@stdlib/assert-is-browser": "^0.1.1",
     "@stdlib/assert-is-windows": "^0.1.1",
     "@stdlib/bench": "^0.1.0",
