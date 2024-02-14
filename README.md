@@ -42,13 +42,13 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@deno/mod.js';
+import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.0-deno/mod.js';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { factory, objectMode } from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@deno/mod.js';
+import { factory, objectMode } from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.0-deno/mod.js';
 ```
 
 <a name="constant-stream"></a>
@@ -234,7 +234,7 @@ This method accepts the same `options` as [`constantStream()`](#constant-stream)
 
 ```javascript
 import inspectStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@deno/mod.js';
-import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@deno/mod.js';
+import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.0-deno/mod.js';
 
 function log( v ) {
     console.log( v.toString() );
