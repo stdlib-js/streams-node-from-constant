@@ -44,7 +44,7 @@ limitations under the License.
 To use in Observable,
 
 ```javascript
-constantStream = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@umd/browser.js' )
+constantStream = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.0-umd/browser.js' )
 ```
 
 To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
@@ -56,7 +56,7 @@ var constantStream = require( 'path/to/vendor/umd/streams-node-from-constant/ind
 To include the bundle in a webpage,
 
 ```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.0-umd/browser.js"></script>
 ```
 
 If no recognized module system is present, access bundle contents via the global scope:
@@ -255,7 +255,7 @@ This method accepts the same `options` as [`constantStream()`](#constant-stream)
 <html lang="en">
 <body>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.0-umd/browser.js"></script>
 <script type="text/javascript">
 (function () {
 
