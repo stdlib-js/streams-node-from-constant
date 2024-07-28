@@ -42,13 +42,18 @@ limitations under the License.
 ## Usage
 
 ```javascript
+import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@esm/index.mjs';
+```
+The previous example will load the latest bundled code from the esm branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/streams-node-from-constant/tags). For example,
+
+```javascript
 import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.2-esm/index.mjs';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { factory, objectMode } from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.2-esm/index.mjs';
+import { factory, objectMode } from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@esm/index.mjs';
 ```
 
 <a name="constant-stream"></a>
@@ -239,7 +244,7 @@ This method accepts the same `options` as [`constantStream()`](#constant-stream)
 <script type="module">
 
 import inspectStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-inspect-sink@esm/index.mjs';
-import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@v0.2.2-esm/index.mjs';
+import constantStream from 'https://cdn.jsdelivr.net/gh/stdlib-js/streams-node-from-constant@esm/index.mjs';
 
 function log( v ) {
     console.log( v.toString() );
