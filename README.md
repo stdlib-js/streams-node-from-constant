@@ -35,250 +35,21 @@ limitations under the License.
 
 > Create a [readable stream][readable-stream] which always streams the same value.
 
-<section class="installation">
 
-## Installation
 
-```bash
-npm install @stdlib/streams-node-from-constant
-```
 
-Alternatively,
 
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
--   To use as a general utility for the command line, install the corresponding [CLI package][cli-section] globally.
 
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
 
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
 
-</section>
-
-<section class="usage">
-
-## Usage
-
-```javascript
-var constantStream = require( '@stdlib/streams-node-from-constant' );
-```
-
-<a name="constant-stream"></a>
-
-#### constantStream( value\[, options] )
-
-Returns a [readable stream][readable-stream] which **always** streams the **same** `value`.
-
-```javascript
-var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
-
-var iStream;
-var stream;
-
-function log( chunk, i ) {
-    console.log( chunk.toString() );
-    if ( i === 10 ) {
-        stream.destroy();
-    }
-}
-
-stream = constantStream( 'beep' );
-iStream = inspectStream( log );
-
-stream.pipe( iStream );
-```
-
-The function accepts the following `options`:
-
--   **objectMode**: specifies whether a [stream][stream] should operate in [objectMode][object-mode]. Default: `false`.
--   **encoding**: specifies how `Buffer` objects should be decoded to `strings`. Default: `null`.
--   **highWaterMark**: specifies the maximum number of bytes to store in an internal buffer before pausing streaming.
--   **sep**: separator used to join streamed data. This option is only applicable when a stream is **not** in [objectMode][object-mode]. Default: `'\n'`.
--   **iter**: number of iterations.
-
-To set [stream][stream] `options`,
-
-```javascript
-var opts = {
-    'objectMode': true,
-    'encoding': 'utf8',
-    'highWaterMark': 64
-};
-
-var stream = constantStream( 'beep', opts );
-```
-
-By default, the function returns a [stream][stream] which streams an infinite number of values (i.e., the [stream][stream] will **never** end). To limit the number of streamed values, set the `iter` option.
-
-```javascript
-var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
-
-function log( chunk ) {
-    console.log( chunk.toString() );
-}
-
-var opts = {
-    'iter': 10
-};
-
-var stream = constantStream( 'beep', opts );
-var iStream = inspectStream( log );
-
-stream.pipe( iStream );
-```
-
-By default, when not operating in [objectMode][object-mode], a returned [stream][stream] delineates streamed values using a newline character. To specify an alternative separator, set the `sep` option.
-
-```javascript
-var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
-
-function log( chunk ) {
-    console.log( chunk.toString() );
-}
-
-var opts = {
-    'iter': 10,
-    'sep': ','
-};
-
-var stream = constantStream( 'beep', opts );
-var iStream = inspectStream( log );
-
-stream.pipe( iStream );
-```
-
-* * *
-
-#### constantStream.factory( \[value, ]\[options] )
-
-Returns a `function` for creating [readable streams][readable-stream] which **always** stream the **same** provided `value`.
-
-```javascript
-var opts = {
-    'objectMode': true,
-    'encoding': 'utf8',
-    'highWaterMark': 64
-};
-
-var createStream = constantStream.factory( opts );
-```
-
-If provided a `value` to stream, the returned function returns [readable streams][readable-stream] which **always** stream the **same** `value`.
-
-```javascript
-var createStream = constantStream.factory( 'beep' );
-
-var stream1 = createStream();
-var stream2 = createStream();
-// ...
-```
-
-If not provided a `value` to stream, the returned function requires that a `value` be provided at each invocation.
-
-```javascript
-var createStream = constantStream.factory();
-
-var stream1 = createStream( 'beep' );
-var stream2 = createStream( 'boop' );
-// ...
-```
-
-The method accepts the same `options` as [`constantStream()`](#constant-stream).
-
-* * *
-
-#### constantStream.objectMode( value\[, options] )
-
-This method is a convenience function to create [streams][stream] which **always** operate in [objectMode][object-mode].
-
-```javascript
-var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
-
-function log( v ) {
-    console.log( v );
-}
-
-var value = {
-    'beep': 'boop'
-};
-var opts = {
-    'iter': 10
-};
-var stream = constantStream.objectMode( value, opts );
-
-opts = {
-    'objectMode': true
-};
-var iStream = inspectStream( opts, log );
-
-stream.pipe( iStream );
-```
-
-This method accepts the same `options` as [`constantStream()`](#constant-stream); however, the method will **always** override the [`objectMode`][object-mode] option in `options`.
-
-</section>
-
-<!-- /.usage -->
-
-* * *
-
-<section class="notes">
-
-## Notes
-
--   In binary mode, a provided `value` must be a `string`, `Buffer`, or `Uint8Array`.
--   In [`objectMode`][object-mode], `null` is a reserved value. If provided `null`, the returned [stream][stream] will prematurely end.
--   If provided an `object` reference, the `value` is **not** copied. To avoid unwanted mutation, copy the `value` **before** creating a [stream][stream].
--   In older Node.js environments, `Uint8Array` contents may be copied to a new `Buffer` object due to changes in the underlying Node.js APIs.
--   If the `factory` method is provided only one argument and that argument is an `object` (either empty or not containing any recognized `options` properties), the method treats the argument as a value to be streamed, **not** as an `options` argument.
-
-</section>
-
-<!-- /.notes -->
-
-* * *
-
-<section class="examples">
-
-## Examples
-
-<!-- eslint no-undef: "error" -->
-
-```javascript
-var inspectStream = require( '@stdlib/streams-node-inspect-sink' );
-var constantStream = require( '@stdlib/streams-node-from-constant' );
-
-function log( v ) {
-    console.log( v.toString() );
-}
-
-var opts = {
-    'objectMode': true,
-    'iter': 10
-};
-
-var stream = constantStream( 3.14, opts );
-
-opts = {
-    'objectMode': true
-};
-var iStream = inspectStream( opts, log );
-
-stream.pipe( iStream );
-```
-
-</section>
-
-<!-- /.examples -->
 
 <!-- Section for describing a command-line interface. -->
 
-* * *
+
 
 <section class="cli">
 
-## CLI
+
 
 <section class="installation">
 
@@ -296,7 +67,7 @@ npm install -g @stdlib/streams-node-from-constant-cli
 
 <section class="usage">
 
-### Usage
+## Usage
 
 ```text
 Usage: constant-stream [options] <value>
@@ -317,7 +88,7 @@ Options:
 
 <section class="notes">
 
-### Notes
+## Notes
 
 -   In accordance with POSIX convention, a trailing newline is **always** appended to generated output prior to exit.
 
@@ -329,7 +100,7 @@ Options:
 
 <section class="examples">
 
-### Examples
+## Examples
 
 ```bash
 $ constant-stream 'beep' -n 10
@@ -347,10 +118,9 @@ $ constant-stream 'beep' -n 10
 
 <section class="related">
 
-* * *
-
 ## See Also
 
+-   <span class="package-name">[`@stdlib/streams-node-from-constant`][@stdlib/streams-node-from-constant]</span><span class="delimiter">: </span><span class="description">create a readable stream which always streams the same value.</span>
 -   <span class="package-name">[`@stdlib/streams-node/from-array`][@stdlib/streams/node/from-array]</span><span class="delimiter">: </span><span class="description">create a readable stream from an array-like object.</span>
 -   <span class="package-name">[`@stdlib/streams-node/from-iterator`][@stdlib/streams/node/from-iterator]</span><span class="delimiter">: </span><span class="description">create a readable stream from an iterator.</span>
 
@@ -371,7 +141,7 @@ This package is part of [stdlib][stdlib], a standard library for JavaScript and 
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
-#### Community
+### Community
 
 [![Chat][chat-image]][chat-url]
 
@@ -394,8 +164,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 <section class="links">
 
-[npm-image]: http://img.shields.io/npm/v/@stdlib/streams-node-from-constant.svg
-[npm-url]: https://npmjs.org/package/@stdlib/streams-node-from-constant
+[npm-image]: http://img.shields.io/npm/v/@stdlib/streams-node-from-constant-cli.svg
+[npm-url]: https://npmjs.org/package/@stdlib/streams-node-from-constant-cli
 
 [test-image]: https://github.com/stdlib-js/streams-node-from-constant/actions/workflows/test.yml/badge.svg?branch=v0.2.3
 [test-url]: https://github.com/stdlib-js/streams-node-from-constant/actions/workflows/test.yml?query=branch:v0.2.3
